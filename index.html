@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password verification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Sacramento&display=swap"
+        rel="stylesheet">
+        <link rel="icon" href="./img/logo.jpg">
+</head>
+
+<style>
+    * {
+        padding: 0%;
+        margin: 0%;
+        font-family: "Poppins", serif;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: #76B457;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form {
+        width: 300px;
+        height: auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px (0, 0, 0, 0.2);
+    }
+
+    .form h1 {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #333;
+        /* color: #5a8b41; */
+    }
+
+    #pwd,
+    #repwd,
+    #currentpwd {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #check {
+        margin-right: 5px;
+    }
+
+    input {
+
+        padding: 10px 5px;
+
+        background-color: #F0F0F0;
+        border: none;
+    }
+
+    ::placeholder {
+        color: #636C72;
+        padding: 10px;
+    }
+
+    input:focus {
+        outline-color: #c8ffac;
+    }
+
+    button {
+        background-color: #76B457;
+        padding: 10px 20px;
+        width: 100%;
+        border: none;
+        color: white;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #68a14a;
+    }
+
+    .viewpwd {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .viewpwd p {
+        font-size: 14px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <form>
+                <h1>Change Password</h1>
+                <input id="currentpwd" type="password" placeholder="Enter the Current Password" required><br>
+                <input id="pwd" type="password" placeholder="Enter the New Password" required><br>
+                <input id="repwd" type="password" placeholder="Re-type the Password" required><br>
+                <div class="viewpwd">
+                    <input type="checkbox" id="check" onclick="func()">
+                    <p>Show Password</p>
+                </div>
+                <button id="btn">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        var currentpwd = document.getElementById("currentpwd")
+        var pwd = document.getElementById("pwd")
+        var repwd = document.getElementById("repwd")
+        var btn = document.getElementById("btn")
+        btn.addEventListener("click", function () {
+
+            event.preventDefault()
+            var validate = true
+
+            if (!currentpwd.value.trim()) {
+                alert("Please enter the Current password");
+                validate = false;
+            }
+            if (!pwd.value.trim()) {
+                alert("Please enter the new password");
+                validate = false;
+            }
+            if (!repwd.value.trim()) {
+                alert("Please re-enter the password");
+                validate = false;
+            }
+
+
+            if (validate) {
+
+                if (pwd.value === repwd.value) {
+                    alert("Password Updated")
+                    pwd.value = "";
+                    repwd.value = "";
+                    currentpwd.value = "";
+                }
+                else {
+                    alert("password Not Matched")
+                    pwd.value = "";
+                    repwd.value = "";
+                    currentpwd.value = "";
+                }
+            }
+        })
+
+        function func() {
+            var pwd = document.getElementById("pwd")
+            if (pwd.type === "password") {
+                pwd.type = "text"
+            }
+            else {
+                pwd.type = "password"
+            }
+        }
+
+    </script>
+</body>
+
+</html>
