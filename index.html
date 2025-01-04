@@ -104,7 +104,7 @@
         <div class="form">
             <form>
                 <h1>Change Password</h1>
-                <input id="currentpwd" type="password" placeholder="Enter the Current Password" required><br>
+                <input id="currentpwd" type="text" placeholder="Enter your Name" required><br>
                 <input id="pwd" type="password" placeholder="Enter the New Password" required><br>
                 <input id="repwd" type="password" placeholder="Re-type the Password" required><br>
                 <div class="viewpwd">
@@ -161,6 +161,7 @@
         })
 
         function func() {
+            
             var pwd = document.getElementById("pwd")
             if (pwd.type === "password") {
                 pwd.type = "text"
